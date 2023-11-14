@@ -1,0 +1,145 @@
+openapi: 3.0.1
+info:
+  title: Test App API documentation
+  description: API documentation for my test App.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8082
+    description: development server
+tags:
+  - name: authentication
+    description: Authentication of the user after login. After a successful response, a token can be retrieved and used as bearer auth for other requests
+  - name: users
+    description: API requests for users
+paths:
+  /data/api/user/{id}:
+    get:
+      tags:
+        - users
+      summary: Get user by ID
+      description: Retrieve user information by their ID.
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user to retrieve.
+          required: true
+          schema:
+            type: string
+            example: 1
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              example:
+                id: 1
+                name: user1
+                email: user@del.gr
+        "401":
+          description: Authorization header required
+        "404":
+          description: User not found
+        "500":
+          description: Internal server error
+      security:
+        - BearerAuth: []
+  /data/api/users:
+    get:
+      tags:
+        - users
+      summary: Get a list of users
+      description: Retrieve a list of all users.
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              example:
+                users:
+                  - id: 1
+                    name: user1
+                    email: user@del.gr
+                  - id: 2
+                    name: user2
+                    email: anotherUser@gmail.com
+        "401":
+          description: Authorization header required
+      security:
+        - BearerAuth: []
+    post:
+      tags:
+        - users
+      summary: Create a new user
+      description: Create a new user with the provided information.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: The name of the user.
+                  example: "JohnDoe"
+                email:
+                  type: string
+                  format: email
+                  description: The email of the user.
+                  example: "JohnDoe@gmail.com"
+                password:
+                  type: string
+                  description: The name of the user.
+                  example: "password"
+              required:
+                - username
+                - email
+                - password
+      responses:
+        "201":
+          description: User created successfully
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+  /data/api/login: # Existing login path
+    post:
+      tags:
+        - authentication
+      summary: User login
+      description: User login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: The name of the user.
+                  example: "admin"
+                password:
+                  type: string
+                  description: The name of the user.
+                  example: "admin"
+              required:
+                - username
+                - password
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              example:
+                token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxMjMiLCJpYXQiOjE2OTE5NjIyMjEsImV4cCI6MTY5MTk2NTgyMX0.ZwWZO4lQ8pF3p-lKt7UK70y5lw6_NOF2mnrgJSfY4LQ,
+                username: test123,
+                userId: 76
+        "500":
+          description: User does not exist
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
