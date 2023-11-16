@@ -4,16 +4,18 @@ Welcome! Before you get started, please ensure that you have the following prere
 
 ## Prerequisites
 
-1. **Node.js:** This project is developed and tested with Node.js version 10.18.1. It is recommended to use this specific version for compatibility.
+1. **Node.js:** This project is developed and tested with Node.js version 10.18.1. It is recommended to use this specific version for compatibility. The express-openapi-validate plugin has some issues in the latest node module, so the swagger API will throw an error in the most recent version of node.
+  Find more information [here](https://stackoverflow.com/questions/66420890/open-api-error-request-should-have-required-property-headers-docker)
+
 
     ```bash
-    # Install Node.js 10.18.1 using your preferred version manager (e.g., nvm or n)
+    # Install Node.js 10.18.1 using your preferred version manager (e.g., nvm or npm)
     nvm install 10.18.1
     ```
 
-2. **Server:** Ensure that a server is set up and running. This app relies on a server to function correctly.
+3. **Server:** Ensure that a server is set up and running. This app relies on a server to function correctly.
 
-3. **Environment Variables:**
+4. **Environment Variables:**
     - Create a new `.env` file in the root of your project.
     - Copy the content from `.env.sample` into `.env`.
 
