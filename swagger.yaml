@@ -11,6 +11,8 @@ tags:
     description: Authentication of the user after login. After a successful response, a token can be retrieved and used as bearer auth for other requests
   - name: users
     description: API requests for users
+  - name: dialogFlow
+    description: send user's text to dialogFlow
 paths:
   /data/api/user/{id}:
     get:
@@ -137,6 +139,36 @@ paths:
                 userId: 76
         "500":
           description: User does not exist
+  /data/api/dialogFlow:
+    post:
+      tags:
+        - dialogFlow
+      summary: Interact with DialogFlow
+      description: Send a text to DialogFlow and receive a response.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: The text to send to DialogFlow.
+                  example: "Hello, how are you?"
+              required:
+                - text
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              example:
+                response: "Good day! What can I do for you today?"
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
 components:
   securitySchemes:
     BearerAuth:
