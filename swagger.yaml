@@ -13,6 +13,8 @@ tags:
     description: API requests for users
   - name: dialogFlow
     description: send user's text to dialogFlow
+  - name: email
+    description: send custom emails using nodemailer
 paths:
   /data/api/user/{id}:
     get:
@@ -165,6 +167,51 @@ paths:
             application/json:
               example:
                 response: "Good day! What can I do for you today?"
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+  /data/api/email:
+    post:
+      tags:
+        - email
+      summary: Send email
+      description: Send email using Nodemailer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                  description: First name of the user
+                  example: "John"
+                lastName:
+                  type: string
+                  description: Last name of the user
+                  example: "Doe"
+                body:
+                  type: string
+                  description: Body of the email
+                  example: "Message"
+                receiver:
+                  type: string
+                  description: Email of the receiver
+                  example: "JohnDoe@gmail.com"
+              required:
+                - firstName
+                - lastName
+                - body
+                - receiver
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              example:
+                messageID: <5f22ea8c-b164-3f71-e559-f7d342535e85@gmail.com>
         "400":
           description: Bad request
         "500":
