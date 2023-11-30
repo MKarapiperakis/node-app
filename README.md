@@ -88,6 +88,35 @@ Release Date: 26/11/2023
 
 ![2](https://github.com/MKarapiperakis/node-app/assets/80547372/c741016b-164e-46f7-9c31-dcea218878c4)
 
+## 1.0.2
+Release Date: 30/11/2023
+
+### New Features
+
+**Sending custom emails using nodemailer:**
+  - In this release, users now have the capability to send customized emails directly from their Gmail accounts using Nodemailer.
+
+### Prerequisites
+1. **Gmail app password**: You need to generate a gmail app password from your Google Account:
+<img width="1435" alt="Google-account-Security-App passwords-Teamgate-SMTP" src="https://github.com/MKarapiperakis/node-app/assets/80547372/c2d08439-d988-4b44-9916-9834e9f56539">
+
+![google-account-app-password](https://github.com/MKarapiperakis/node-app/assets/80547372/fea5ad69-7bff-4db2-bbb5-929832b191de)
+
+2. **Environment Variables:**
+    - Create a new or modify the existing `.env` file in the root of your project.
+    - Copy the content from `.env.sample` into `.env`. Three new environment variables have been added:
+      1. EMAIL_SENDER
+      2. PASSWORD_SENDER
+      3. EMAIL_RECEIVER
+    - Substitute the initial variable with your Gmail address, the second one with the password generated in the initial step, and choose an email recipient.
+
+### Test your agent using Swagger UI
+![image](https://github.com/MKarapiperakis/node-app/assets/80547372/ed2bd1fe-12bc-461a-85c8-6dd43829d385)
+![image](https://github.com/MKarapiperakis/node-app/assets/80547372/61f43006-cdcb-4ef6-9e36-3b0be705cbbd)
+
+### Check your Emails!
+![image](https://github.com/MKarapiperakis/node-app/assets/80547372/77927613-eb2c-4d9d-a030-faa494af80a6)
+
 
 
 
