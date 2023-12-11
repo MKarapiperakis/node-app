@@ -12,7 +12,7 @@ const {
   BadRequestError,
   NotFoundError,
 } = require("./lib/errors");
-const { bearerAuthenticator } = require("./middlewares/authenticator");
+const { bearerAuthenticator, basicAuthenticator } = require("./middlewares/authenticator");
 
 
 require("dotenv").config();
@@ -29,6 +29,7 @@ module.exports = async () => {
     validateSecurity: {
       handlers: {
         BearerAuth: bearerAuthenticator,
+        BasicAuth: basicAuthenticator
       },
     },
   }).install(app);

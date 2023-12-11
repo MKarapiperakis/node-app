@@ -49,7 +49,6 @@ exports.login = (req, res, next) => {
       }
     }
 
-    
     // client.end();
   });
 };

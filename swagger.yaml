@@ -106,6 +106,8 @@ paths:
           description: Bad request
         "500":
           description: Internal server error
+      security:
+        - BasicAuth: []
   /data/api/login: # Existing login path
     post:
       tags:
@@ -222,3 +224,6 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
+    BasicAuth:    
+      type: http
+      scheme: basic
