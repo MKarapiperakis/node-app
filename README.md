@@ -110,7 +110,7 @@ Release Date: 30/11/2023
       3. EMAIL_RECEIVER
     - Substitute the initial variable with your Gmail address, the second one with the password generated in the initial step, and choose an email recipient.
 
-### Test your agent using Swagger UI
+### Test your server using Swagger UI
 ![image](https://github.com/MKarapiperakis/node-app/assets/80547372/ed2bd1fe-12bc-461a-85c8-6dd43829d385)
 ![image](https://github.com/MKarapiperakis/node-app/assets/80547372/61f43006-cdcb-4ef6-9e36-3b0be705cbbd)
 
@@ -118,7 +118,28 @@ Release Date: 30/11/2023
 ![image](https://github.com/MKarapiperakis/node-app/assets/80547372/77927613-eb2c-4d9d-a030-faa494af80a6)
 
 
+## 1.0.3
+Release Date: 11/12/2023
 
+### New Features
+
+## Adding Basic Authentication for Enhanced Security
+With this release, users have the option to implement Basic Authentication to enhance the security of their API requests.
+
+### Prerequisites
+
+1. **Environment Variables:**
+    - Create a new or modify the existing `.env` file in the root of your project.
+    - Copy the content from `.env.sample` into `.env`. One additional environment variable has been added with name BASIC_AUTH. It is a based 64 encoded value:
+    BASIC_AUTH='bm9kZTphcHA=' --> node:app (username:password)
+    - Use this username and password in swagger UI
+
+
+    ![image](https://github.com/MKarapiperakis/node-app/assets/80547372/6fa88316-aef9-4b76-a312-fc2328f00b4b)
+
+ ### Test your server using Swagger UI
+
+ ![image](https://github.com/MKarapiperakis/node-app/assets/80547372/4c4943c0-94f6-41e7-b978-52039ac82c66)
 
 
 
